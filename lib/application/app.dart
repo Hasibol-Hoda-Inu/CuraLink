@@ -1,3 +1,4 @@
+import 'package:curalink/application/app_colors.dart';
 import 'package:curalink/application/routes/app_route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +21,7 @@ class CuraLink extends StatelessWidget {
 
         theme: ThemeData(
           useMaterial3: true,
+          colorSchemeSeed: AppColors.primaryColor,
           fontFamily: "Poppins",
         ),
 
