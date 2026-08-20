@@ -1,5 +1,6 @@
 import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/auth/ui/screens/login.dart';
+import 'package:curalink/features/auth/ui/screens/sign_up.dart';
 import 'package:curalink/features/onboarding/ui/screens/get_started.dart';
 import 'package:curalink/features/onboarding/ui/screens/onboarding.dart';
 import 'package:curalink/features/onboarding/ui/screens/splash_screen.dart';
@@ -31,6 +32,12 @@ final GoRouter appRouter = GoRouter(
       name: AppRouteConst.loginRoute,
       path: "/login",
       pageBuilder: (context, state)=> const MaterialPage(child: LoginScreen()),
+
+    ),
+    GoRoute(
+      name: AppRouteConst.signUpRoute,
+      path: "/signUp",
+      pageBuilder: (context, state)=> const MaterialPage(child: SignUp()),
 
     ),
   ]

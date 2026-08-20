@@ -140,11 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ? const SizedBox.shrink()
                 : TextButton(
               onPressed: () {
-                _pageController.animateToPage(
-                  _onboardingData.length - 1,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeInOut,
-                );
+                GoRouter.of(context).pushReplacementNamed(AppRouteConst.getStartedRoute);
               },
               child: Text(
                 "Skip",
@@ -165,44 +161,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     _onboardingData.length,
                         (index) => AnimatedContainer(
                       duration: const Duration(milliseconds: 300),
-                      margin: const EdgeInsets.only(right: 8),
+                      margin: EdgeInsets.only(right: 8.w),
                       height: 10.h,
                       width: _currentIndex == index ? 24.w : 10.w,
                       decoration: BoxDecoration(
                         color: _currentIndex == index
                             ? AppColors.primaryColor
                             : Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5.r),
                       ),
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (_currentIndex == _onboardingData.length - 1) {
-                      GoRouter.of(context).pushReplacementNamed(AppRouteConst.getStartedRoute);
-                    } else {
-                      _pageController.nextPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 24.w, vertical: 12.h),
+                IconButton.filled(
+                    onPressed: (){
+                      if (_currentIndex == _onboardingData.length - 1) {
+                        GoRouter.of(context).pushReplacementNamed(AppRouteConst.getStartedRoute);
+                      } else {
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    },
+                    icon: Icon(Icons.arrow_forward_rounded),
+                  iconSize: 24.sp,
+                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                  style: IconButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor
                   ),
-                  child: Text(
-                    _currentIndex == _onboardingData.length - 1
-                        ? "Get Started"
-                        : "Next",
-                  ),
-                ),
+                )
               ],
             ),
           ),

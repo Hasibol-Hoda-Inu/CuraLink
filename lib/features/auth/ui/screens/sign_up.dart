@@ -12,11 +12,14 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Sign up", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp),),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 40.h),
         child: Column(
           children: [
-            Text("Sign up"),
             Form(
               child: Column(
                 children: [
@@ -43,7 +46,7 @@ class _SignUpState extends State<SignUp> {
             ),
             Row(
               children: [
-                Checkbox(value: true, onChanged: (value){}),
+                Checkbox(value: false, onChanged: (value){}),
                 RichText(
                   text: TextSpan(
                     text: "I agree to the ",
@@ -71,11 +74,12 @@ class _SignUpState extends State<SignUp> {
                 width: double.infinity,
                 child: ElevatedButton(onPressed: (){}, child: Text("Sign up"))),
             Row(
+              mainAxisAlignment: .center,
               children: [
                 Text("Already have an account?"),
                 TextButton(
                     onPressed: (){},
-                    child: Text("Sign in", style: TextStyle(color: Colors.blue),)
+                    child: Text("Sign in", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w500),)
                 ),
               ],
             ),

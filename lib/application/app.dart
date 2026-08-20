@@ -1,8 +1,7 @@
-import 'package:curalink/application/app_colors.dart';
+import 'package:curalink/application/app_theme.dart';
 import 'package:curalink/application/routes/app_route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class CuraLink extends StatelessWidget {
   const CuraLink({super.key});
@@ -12,19 +11,13 @@ class CuraLink extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 800),
       minTextAdapt: true,
-      child: MaterialApp.router(
+      builder: (context, child) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
 
-        routeInformationParser: appRouter.routeInformationParser,
-        routerDelegate: appRouter.routerDelegate,
-        routeInformationProvider: appRouter.routeInformationProvider,
+        routerConfig: appRouter,
 
-        theme: ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: AppColors.primaryColor,
-          fontFamily: "Poppins",
-        ),
-
+        theme: AppThemeData.lightThemeData,
+        themeMode: ThemeMode.light,
         // home: SplashScreen(),
       ),
     );
