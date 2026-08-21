@@ -37,6 +37,27 @@ class AppThemeData{
           minimumSize: Size(double.infinity, 56.h),
         )
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6.r),
+          borderSide: BorderSide(color: AppColors.greyText),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6.r),
+          borderSide: BorderSide(color: AppColors.greyText),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(6.r),
+          borderSide: BorderSide(color: AppColors.primaryColor),
+        ),
+        hintStyle: TextStyle(
+          color: AppColors.greyText,
+          fontSize: 14.sp,
+        ),
+        iconColor: AppColors.greyText,
+        prefixIconColor: AppColors.greyText,
+        suffixIconColor: AppColors.greyText,
+      ),
     );
   }
 }

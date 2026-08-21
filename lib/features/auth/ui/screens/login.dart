@@ -1,8 +1,10 @@
 import 'package:curalink/application/app_colors.dart';
 import 'package:curalink/application/assets_path.dart';
+import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -25,17 +27,18 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Form(
               child: Column(
+                spacing: 14.h,
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter your email",
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email_outlined),
                     ),
                   ),
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter your password",
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: Icon(Icons.lock_outline_rounded),
                     ),
                   ),
                 ],
@@ -52,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             SizedBox(height: 50.h),
-            ElevatedButton(onPressed: () {}, child: Text("Sign in")),
+            ElevatedButton(onPressed: toHomeScreen, child: Text("Login")),
             Row(
               mainAxisAlignment: .center,
               children: [
@@ -85,14 +88,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 spacing: 8.w,
                 children: [
                   SvgPicture.asset(AssetsPath.googleLogo, width: 20.w),
-                  Text("Sign in with google"),
+                  Text("Login with google"),
                 ],
               ),
             ),
             SizedBox(height: 24.h),
             OutlinedButton.icon(
               onPressed: () {},
-              label: Text("Sign in with Facebook"),
+              label: Text("Login with Facebook"),
               icon: Icon(
                 Icons.facebook,
                 color: AppColors.primaryColor,
@@ -103,5 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void toHomeScreen(){
+    GoRouter.of(context).pushReplacementNamed(AppRouteConst.homeRoute);
   }
 }

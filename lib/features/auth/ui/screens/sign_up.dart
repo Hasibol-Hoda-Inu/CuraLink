@@ -22,23 +22,25 @@ class _SignUpState extends State<SignUp> {
           children: [
             Form(
               child: Column(
+                spacing: 14.h,
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter your name",
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.person_outline),
                     ),
                   ),
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter your email",
-                      prefixIcon: Icon(Icons.email),
+                      prefixIcon: Icon(Icons.email_outlined),
                     ),
                   ),
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: "Enter your password",
-                      prefixIcon: Icon(Icons.lock),
+                      prefixIcon: Icon(Icons.lock_outline_rounded),
+                      suffixIcon: Icon(Icons.visibility_off_outlined),
                     ),
                   ),
                 ]
