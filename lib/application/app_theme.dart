@@ -37,6 +37,13 @@ class AppThemeData{
           minimumSize: Size(double.infinity, 56.h),
         )
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: AppColors.primaryColor,
+          padding: EdgeInsets.all(0),
+        )
+      ),
+
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6.r),

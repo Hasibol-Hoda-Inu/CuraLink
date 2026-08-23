@@ -1,6 +1,7 @@
 import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/auth/ui/screens/login.dart';
 import 'package:curalink/features/auth/ui/screens/sign_up.dart';
+import 'package:curalink/features/doctors/ui/screens/doctor_details.dart';
 import 'package:curalink/features/doctors/ui/screens/top_doctors.dart';
 import 'package:curalink/features/home/ui/screens/home_screen.dart';
 import 'package:curalink/features/onboarding/ui/screens/get_started.dart';
@@ -52,6 +53,12 @@ final GoRouter appRouter = GoRouter(
       name: AppRouteConst.topDoctorsRoute,
       path: "/topDocs",
       pageBuilder: (context, state)=> const MaterialPage(child: TopDoctors()),
+
+    ),
+    GoRoute(
+      name: AppRouteConst.docDetailsRoute,
+      path: "/docDetails",
+      pageBuilder: (context, state)=> const MaterialPage(child: DoctorDetails()),
 
     ),
   ]
