@@ -7,6 +7,8 @@ import 'package:curalink/features/home/ui/screens/home_screen.dart';
 import 'package:curalink/features/onboarding/ui/screens/get_started.dart';
 import 'package:curalink/features/onboarding/ui/screens/onboarding.dart';
 import 'package:curalink/features/onboarding/ui/screens/splash_screen.dart';
+import 'package:curalink/features/pharmacy/ui/screens/pharmacy.dart';
+import 'package:curalink/features/profile/ui/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -60,6 +62,16 @@ final GoRouter appRouter = GoRouter(
       path: "/docDetails",
       pageBuilder: (context, state)=> const MaterialPage(child: DoctorDetails()),
 
+    ),
+    GoRoute(
+      name: AppRouteConst.pharmacyRoute,
+      path: "/pharmacy",
+      pageBuilder: (context, state)=> const MaterialPage(child: Pharmacy()),
+    ),
+    GoRoute(
+      name: AppRouteConst.profileRoute,
+      path: "/profile",
+      pageBuilder: (context, state)=> const MaterialPage(child: Profile()),
     ),
   ]
 );

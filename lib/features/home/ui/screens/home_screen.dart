@@ -1,8 +1,8 @@
 import 'package:curalink/application/assets_path.dart';
 import 'package:curalink/application/routes/app_route_const.dart';
+import 'package:curalink/features/common/ui/widgets/section_header.dart';
 import 'package:curalink/features/home/ui/widgets/article_container.dart';
 import 'package:curalink/features/home/ui/widgets/category_item.dart';
-import 'package:curalink/features/home/ui/widgets/section_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: .start,
                       children: [
-                        Image.asset(AssetsPath.profile, width: 48.w,),
+                        GestureDetector(
+                            onTap: toProfile,
+                            child: Image.asset(AssetsPath.profile, width: 48.w,)),
                         SizedBox(height: 14.h,),
                         Text("Welcome!", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
                         Text("Ruchita", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w300),),
@@ -76,12 +78,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             iconPath: AssetsPath.topDocs,
                             onTap: toTopDoctors,
                           )),
-                      Expanded(child: CategoryItem(label: 'Pharmacy', iconPath: AssetsPath.topDocs, onTap: () {},)),
+                      Expanded(child: CategoryItem(
+                        label: 'Pharmacy',
+                        iconPath: AssetsPath.topDocs,
+                        onTap: toPharmacy,)),
                       Expanded(child: CategoryItem(label: 'Ambulance', iconPath: AssetsPath.topDocs, onTap: () {},)),
                     ]
                   ),
                   SizedBox(height: 30.h,),
-                  SectionHeader(),
+                  SectionHeader(title: 'Health articles', onClick: () {  },),
                   SizedBox(height: 10.h,),
                   ListView.builder(
                     itemCount: 10,
@@ -100,6 +105,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void toTopDoctors(){
     GoRouter.of(context).pushNamed(AppRouteConst.topDoctorsRoute);
+  }
+
+  void toPharmacy(){
+    GoRouter.of(context).pushNamed(AppRouteConst.pharmacyRoute);
+  }
+
+  void toProfile(){
+    GoRouter.of(context).pushNamed(AppRouteConst.profileRoute);
   }
 
 }
