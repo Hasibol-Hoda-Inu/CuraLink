@@ -1,6 +1,7 @@
 import 'package:curalink/application/app_colors.dart';
-import 'package:curalink/application/assets_path.dart';
+import 'package:curalink/features/doctors/ui/widgets/consultation_type_card.dart';
 import 'package:curalink/features/doctors/ui/widgets/date_card.dart';
+import 'package:curalink/features/doctors/ui/widgets/status_card.dart';
 import 'package:curalink/features/doctors/ui/widgets/time_slot_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,6 +17,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   int selectedIndex = 2;
   int selectedTimeIndex = 4;
+  int selectedConsultationIndex = 0;
 
   final List<Map<String, String>> dates = [
     {"day": "Mon", "date": "21"},
@@ -45,103 +47,233 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       appBar: AppBar(
         title: Text("Doctor Details", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp),),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.bookmark_border_rounded))
+        ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0.w),
-        child: Column(
-          crossAxisAlignment: .start,
-          children: [
-            Row(
-              spacing: 8.w,
-              children: [
-                Image.asset(AssetsPath.topDoc, height: 96.h,),
-                Expanded(
-                    child: Column(
-                      crossAxisAlignment: .start,
-                      children: [
-                        Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
-                        Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
-                        Chip(
-                          padding: EdgeInsets.all(2),
-                          side: BorderSide.none,
-                          avatar: Icon(Icons.star_rounded, color: AppColors.primaryColor,),
-                          label: Text("4.7", style: TextStyle(color: AppColors.primaryColor),),
-                          backgroundColor: AppColors.primaryColor.withAlpha(17),
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on, color: Colors.grey.shade400,),
-                            Text("800m away", style: TextStyle(color: AppColors.greyText),),
-                          ],
-                        ),
-                      ],
-                    ))
-              ],
-            ),
-            SizedBox(height: 20.h,),
-            Text("About", style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 16.sp,
-            ),),
-            Text("Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut laore et dolore magna aliqua. Ut enim ad minim veniam",
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: AppColors.bodyText,
+        padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 20.h),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: .start,
+            children: [
+              Row(
+                spacing: 10.w,
+                children: [
+                  //Image.asset(AssetsPath.topDoc, height: 116.h,),
+                  Container(
+                    height: 116.h,
+                    width: 96.w,
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor.withAlpha(28),
+                      borderRadius: BorderRadius.circular(16.sp)
+                    ),
+                  ),
+                  Expanded(
+                      child: Column(
+                        crossAxisAlignment: .start,
+                        children: [
+                          Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
+                          Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
+                          Chip(
+                            padding: EdgeInsets.all(2),
+                            labelPadding: const EdgeInsets.only(left: 0, right: 8),
+                            side: BorderSide.none,
+                            avatar: Icon(Icons.star_rounded, color: AppColors.primaryColor,),
+                            label: Text("4.7", style: TextStyle(color: AppColors.primaryColor),),
+                            backgroundColor: AppColors.primaryColor.withAlpha(17),
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.location_on, color: Colors.grey.shade400,),
+                              Text("800m away", style: TextStyle(color: AppColors.greyText),),
+                            ],
+                          ),
+                        ],
+                      ))
+                ],
               ),
-            ),
-            TextButton(
+              SizedBox(height: 20.h,),
+              Row(
+                spacing: 10.w,
+                children: [
+                  StatCard(label: "Experience", value: "10 years"),
+                  StatCard(label: "Patients", value: "2.5K+"),
+                  StatCard(label: "Reviews", value: "1.2K"),
+                ],
+              ),
+              SizedBox(height: 30.h,),
+              Text("About", style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),),
+              Text("Lorem ipsum dolor sit amet, consectetur adipi elit, sed do eiusmod tempor incididunt ut laore et dolore magna aliqua. Ut enim ad minim veniam Ut enim ad minim veniam",
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: AppColors.bodyText,
+                ),
+              ),
+              TextButton(
                 onPressed: (){},
                 child: Text("Read more"),
-            ),
-            SizedBox(height: 20.h,),
-            SizedBox(
-              height: 80.h,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: dates.length,
-                itemBuilder: (context, index)=> DateCard(
-                  day: dates[index]["day"]!,
-                  date: dates[index]["date"]!,
-                  isSelected: selectedIndex == index,
-                  onTap: (){
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  },
-                ),
-                separatorBuilder: (context, index)=> SizedBox(width: 16.w,),
               ),
-            ),
-            SizedBox(height: 24.h,),
-            Divider(
-              color: AppColors.primaryColor.withAlpha(34),
-              height: 1,
-            ),
-            SizedBox(height: 24.h,),
-            Wrap(
-              spacing: 20.w,
-              runSpacing: 14.h,
-              alignment: WrapAlignment.center,
-              children: List.generate(timeSlots.length, (index){
-                final slot = timeSlots[index];
-                return SizedBox(
-                  width: 86.w,
-                  child: TimeSlotChip(
-                      time: slot["time"],
-                      isSelected: selectedTimeIndex == index,
-                      onTap: (){
-                        setState(() {
-                          selectedTimeIndex = index;
-                        });
-                      },
+              Row(
+                mainAxisAlignment: .spaceBetween,
+                children: [
+                  Text("Consultation Type", style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                  ),),
+                  Chip(
+                    label: Text(
+                      "30 Mins Session",
+                      style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    backgroundColor: const Color(0xFFF4F8FF),
+                    side: const BorderSide(
+                      color: Color(0xFFE0E9F8),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                    labelPadding: EdgeInsets.symmetric(horizontal: 4.w),
+                  )
+                ],
+              ),
+              SizedBox(height: 10.h,),
+              Row(
+                spacing: 12.w,
+                children: [
+                  Expanded(
+                    child: ConsultationTypeCard(
+                        title: "In-Clinic Visit",
+                        subtitle: "Metro Heart Clinic",
+                        price: "\$80",
+                        duration: "30 min",
+                        mainIcon: Icons.medical_services_rounded,
+                        isSelected: selectedConsultationIndex == 0,
+                        onTap: (){
+                          setState(() {
+                            selectedConsultationIndex = 0;
+                          });
+                        }
+                    ),
                   ),
-                );
-              }),
-            ),
-            SizedBox(height: 34.h,),
-            ElevatedButton(onPressed: (){}, child: Text("Book Appointment"))
-          ],
+                  Expanded(
+                    child: ConsultationTypeCard(
+                        title: "Video Consult",
+                        subtitle: "Video call via app",
+                        price: "\$60",
+                        duration: "30 min",
+                        mainIcon: Icons.videocam_rounded,
+                        isSelected: selectedConsultationIndex == 1,
+                        onTap: (){
+                          setState(() {
+                            selectedConsultationIndex = 1;
+                          });
+                        }
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.h,),
+              Row(
+                mainAxisAlignment: .spaceBetween,
+                children: [
+                  Text("Available Dates", style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                  ),),
+                  TextButton(onPressed: (){}, child: Text("October 2026"))
+                ],
+              ),
+              SizedBox(
+                height: 80.h,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: dates.length,
+                  itemBuilder: (context, index)=> DateCard(
+                    day: dates[index]["day"]!,
+                    date: dates[index]["date"]!,
+                    isSelected: selectedIndex == index,
+                    onTap: (){
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                  ),
+                  separatorBuilder: (context, index)=> SizedBox(width: 16.w,),
+                ),
+              ),
+              SizedBox(height: 24.h,),
+              Divider(
+                color: AppColors.primaryColor.withAlpha(34),
+                height: 1,
+              ),
+              SizedBox(height: 24.h,),
+              Text("Available Time", style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),),
+              SizedBox(height: 16.h,),
+              Wrap(
+                spacing: 20.w,
+                runSpacing: 14.h,
+                alignment: WrapAlignment.center,
+                children: List.generate(timeSlots.length, (index){
+                  final slot = timeSlots[index];
+                  return SizedBox(
+                    width: 86.w,
+                    child: TimeSlotChip(
+                        time: slot["time"],
+                        isSelected: selectedTimeIndex == index,
+                        onTap: (){
+                          setState(() {
+                            selectedTimeIndex = index;
+                          });
+                        },
+                    ),
+                  );
+                }),
+              ),
+              SizedBox(height: 34.h,),
+              Row(
+                spacing: 10.w,
+                children: [
+                  Column(
+                    crossAxisAlignment: .start,
+                    children: [
+                      Text("Total Price", style: TextStyle(
+                        color: AppColors.greyText,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                      ),),
+                      Row(
+                        mainAxisSize: .min,
+                        crossAxisAlignment: .end,
+                        children: [
+                          Text(selectedConsultationIndex == 0 ? "\$80" : "\$60", style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16.sp,
+                          ),),
+                          Text("/30 min", style: TextStyle(
+                            color: AppColors.greyText,
+                            fontSize: 12.sp,
+                          ),),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Expanded(child: ElevatedButton(onPressed: (){}, child: Text("Book Appointment"))),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
