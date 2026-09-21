@@ -1,5 +1,6 @@
 import 'package:curalink/application/app_colors.dart';
 import 'package:curalink/application/assets_path.dart';
+import 'package:curalink/features/doctors/ui/widgets/review_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,13 +31,7 @@ class TopDocCard extends StatelessWidget {
                   children: [
                     Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
                     Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
-                    Chip(
-                      padding: EdgeInsets.all(2),
-                      side: BorderSide.none,
-                      avatar: Icon(Icons.star_rounded, color: AppColors.primaryColor,),
-                      label: Text("4.7", style: TextStyle(color: AppColors.primaryColor),),
-                      backgroundColor: AppColors.primaryColor.withAlpha(17),
-                    ),
+                    ReviewChip(),
                     Row(
                       children: [
                         Icon(Icons.location_on, color: Colors.grey.shade400,),

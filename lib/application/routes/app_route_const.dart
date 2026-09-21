@@ -10,6 +10,8 @@ class AppRouteConst {
 
   static const String topDoctorsRoute = "topDocs";
   static const String docDetailsRoute = "docDetails";
+  static const String appointmentSumRoute = "appointmentSum";
+  static const String bookingConfirmationRoute = "bookingConfirmation";
 
   static const String profileRoute = "profile";
 

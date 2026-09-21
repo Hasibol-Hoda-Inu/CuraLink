@@ -1,10 +1,13 @@
 import 'package:curalink/application/app_colors.dart';
+import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/doctors/ui/widgets/consultation_type_card.dart';
 import 'package:curalink/features/doctors/ui/widgets/date_card.dart';
+import 'package:curalink/features/doctors/ui/widgets/review_chip.dart';
 import 'package:curalink/features/doctors/ui/widgets/status_card.dart';
 import 'package:curalink/features/doctors/ui/widgets/time_slot_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class DoctorDetails extends StatefulWidget {
   const DoctorDetails({super.key});
@@ -75,14 +78,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         children: [
                           Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
                           Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
-                          Chip(
-                            padding: EdgeInsets.all(2),
-                            labelPadding: const EdgeInsets.only(left: 0, right: 8),
-                            side: BorderSide.none,
-                            avatar: Icon(Icons.star_rounded, color: AppColors.primaryColor,),
-                            label: Text("4.7", style: TextStyle(color: AppColors.primaryColor),),
-                            backgroundColor: AppColors.primaryColor.withAlpha(17),
-                          ),
+                          ReviewChip(),
                           Row(
                             children: [
                               Icon(Icons.location_on, color: Colors.grey.shade400,),
@@ -269,13 +265,20 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       ),
                     ],
                   ),
-                  Expanded(child: ElevatedButton(onPressed: (){}, child: Text("Book Appointment"))),
+                  Expanded(child: ElevatedButton(
+                      onPressed: toAppointmentSum,
+                      child: Text("Book Appointment")
+                  )),
                 ],
-              )
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void toAppointmentSum(){
+    GoRouter.of(context).pushNamed(AppRouteConst.appointmentSumRoute);
   }
 }

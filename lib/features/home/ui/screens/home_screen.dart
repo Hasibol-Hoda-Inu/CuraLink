@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 64.h,),
+            SizedBox(height: 64.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0.w),
               child: Row(
@@ -34,13 +34,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: .start,
                       children: [
                         GestureDetector(
-                            onTap: toProfile,
-                            child: Image.asset(AssetsPath.profile, width: 48.w,)),
-                        SizedBox(height: 14.h,),
-                        Text("Welcome!", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
-                        Text("Ruchita", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w300),),
-                        SizedBox(height: 8.h,),
-                        Text("How is it going today?",
+                          onTap: toProfile,
+                          child: Image.asset(AssetsPath.profile, width: 48.w),
+                        ),
+                        SizedBox(height: 14.h),
+                        Text(
+                          "Welcome!",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Text(
+                          "Ruchita",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        SizedBox(height: 8.h),
+                        Text(
+                          "How is it going today?",
                           style: TextStyle(fontSize: 16.sp, color: Colors.grey),
                           softWrap: true,
                         ),
@@ -48,23 +62,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Image.asset(AssetsPath.homeDoc, width: 120.w,)),
+                    fit: BoxFit.scaleDown,
+                    child: Image.asset(AssetsPath.homeDoc, width: 120.w),
+                  ),
                 ],
               ),
             ),
             Container(
-              padding: EdgeInsets.only(
-                top: 20.h,
-                left: 30.w,
-                right: 30.w,
-              ),
+              padding: EdgeInsets.only(top: 20.h, left: 30.w, right: 30.w),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(26),
-                  topRight: Radius.circular(26),
-                )
+                  topLeft: Radius.circular(36),
+                  topRight: Radius.circular(36),
+                ),
               ),
               child: Column(
                 children: [
@@ -73,27 +84,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     spacing: 20.w,
                     children: [
                       Expanded(
-                          child: CategoryItem(
-                            label: 'Top Doctors',
-                            iconPath: AssetsPath.topDocs,
-                            onTap: toTopDoctors,
-                          )),
-                      Expanded(child: CategoryItem(
-                        label: 'Pharmacy',
-                        iconPath: AssetsPath.topDocs,
-                        onTap: toPharmacy,)),
-                      Expanded(child: CategoryItem(label: 'Ambulance', iconPath: AssetsPath.topDocs, onTap: () {},)),
-                    ]
+                        child: CategoryItem(
+                          label: 'Top Doctors',
+                          iconPath: AssetsPath.topDocs,
+                          onTap: toTopDoctors,
+                        ),
+                      ),
+                      Expanded(
+                        child: CategoryItem(
+                          label: 'Pharmacy',
+                          iconPath: AssetsPath.pharmacyIcon,
+                          onTap: toPharmacy,
+                        ),
+                      ),
+                      Expanded(
+                        child: CategoryItem(
+                          label: 'Ambulance',
+                          iconPath: AssetsPath.ambulanceIcon,
+                          onTap: () {},
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 30.h,),
-                  SectionHeader(title: 'Health articles', onClick: () {  },),
-                  SizedBox(height: 10.h,),
+                  SizedBox(height: 30.h),
+                  SectionHeader(title: 'Health articles', onClick: () {}),
                   ListView.builder(
                     itemCount: 10,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.zero,
-                    itemBuilder: (context, index)=> ArticleContainer(),),
+                    itemBuilder: (context, index) => ArticleContainer(),
+                  ),
                 ],
               ),
             ),
@@ -103,18 +124,15 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void toTopDoctors(){
+  void toTopDoctors() {
     GoRouter.of(context).pushNamed(AppRouteConst.topDoctorsRoute);
   }
 
-  void toPharmacy(){
+  void toPharmacy() {
     GoRouter.of(context).pushNamed(AppRouteConst.pharmacyRoute);
   }
 
-  void toProfile(){
+  void toProfile() {
     GoRouter.of(context).pushNamed(AppRouteConst.profileRoute);
   }
-
 }
-
-

@@ -1,6 +1,8 @@
 import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/auth/ui/screens/login.dart';
 import 'package:curalink/features/auth/ui/screens/sign_up.dart';
+import 'package:curalink/features/doctors/ui/screens/appointment_summary.dart';
+import 'package:curalink/features/doctors/ui/screens/booking_confirmation.dart';
 import 'package:curalink/features/doctors/ui/screens/doctor_details.dart';
 import 'package:curalink/features/doctors/ui/screens/top_doctors.dart';
 import 'package:curalink/features/home/ui/screens/home_screen.dart';
@@ -61,6 +63,18 @@ final GoRouter appRouter = GoRouter(
       name: AppRouteConst.docDetailsRoute,
       path: "/docDetails",
       pageBuilder: (context, state)=> const MaterialPage(child: DoctorDetails()),
+
+    ),
+    GoRoute(
+      name: AppRouteConst.appointmentSumRoute,
+      path: "/appointmentSum",
+      pageBuilder: (context, state)=> const MaterialPage(child: AppointmentSummary()),
+
+    ),
+    GoRoute(
+      name: AppRouteConst.bookingConfirmationRoute,
+      path: "/bookingConfirmation",
+      pageBuilder: (context, state)=> const MaterialPage(child: BookingConfirmation()),
 
     ),
     GoRoute(

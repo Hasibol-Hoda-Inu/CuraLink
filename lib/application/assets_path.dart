@@ -17,6 +17,8 @@ class AssetsPath {
 
   static const String googleLogo = "$_base/Google.svg";
   static const String topDocs = "$_base/topDocs.svg";
+  static const String pharmacyIcon = "$_base/pharmacy.svg";
+  static const String ambulanceIcon = "$_base/ambulance.svg";
 
   static const String profileIcon1 = "$_base/icon1.svg";
   static const String profileIcon2 = "$_base/icon2.svg";
