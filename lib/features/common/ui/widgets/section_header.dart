@@ -10,13 +10,16 @@ class SectionHeader extends StatelessWidget {
 
   final String title;
   final VoidCallback onClick;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: .spaceBetween,
       children: [
-        Text(title,
-          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
+        Text(
+          title,
+          style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
+        ),
         TextButton(
             onPressed: onClick,
             child: Text("See all")

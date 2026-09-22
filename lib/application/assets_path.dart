@@ -8,6 +8,7 @@ class AssetsPath {
   static const String docM = "$_base/docm.png";
   static const String homeDoc = "$_base/homeDoc.png";
   static const String topDoc = "$_base/topdoc.png";
+  static const String topDocChamber = "$_base/topdoc.jpg";
 
   static const String bodrex = "$_base/bodrex.jpg";
   static const String phBanner = "$_base/phbanner.png";

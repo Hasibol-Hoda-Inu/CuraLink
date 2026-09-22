@@ -20,10 +20,19 @@ class _TopDoctorsState extends State<TopDoctors> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.0.w),
-        child: ListView.separated(
-            itemCount: 10,
-            separatorBuilder: (context, index)=> SizedBox(height: 20.h,),
-            itemBuilder: (context, index)=> TopDocCard(onClick: toDocDetails,)),
+        child: Column(
+          crossAxisAlignment: .start,
+          spacing: 20.h,
+          children: [
+            Text("Showing 48 verified\nspecialists"),
+            Expanded(
+              child: ListView.separated(
+                  itemCount: 10,
+                  separatorBuilder: (context, index)=> SizedBox(height: 20.h,),
+                  itemBuilder: (context, index)=> TopDocCard(onClick: toDocDetails,)),
+            ),
+          ],
+        ),
       ),
     );
   }

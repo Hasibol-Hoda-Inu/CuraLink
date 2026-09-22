@@ -3,6 +3,7 @@ import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/common/ui/widgets/section_header.dart';
 import 'package:curalink/features/home/ui/widgets/article_container.dart';
 import 'package:curalink/features/home/ui/widgets/category_item.dart';
+import 'package:curalink/features/home/ui/widgets/top_doc_profile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -78,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Column(
+                crossAxisAlignment: .start,
                 children: [
                   Row(
                     crossAxisAlignment: .start,
@@ -107,9 +109,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   SizedBox(height: 30.h),
+                  SectionHeader(title: 'Top Doctors', onClick: () {}),
+                  Transform.translate(
+                      offset: Offset(0, -10),
+                      child: Text("Highly recommended specialist near you")),
+                  SizedBox(height: 4.h,),
+                  SizedBox(
+                    height: 284.h,
+                    child: ListView.separated(
+                      itemCount: 4,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) => SizedBox(
+                        width: 240.w,
+                        child: TopDocProfileCard(
+                              imagePath: AssetsPath.topDocChamber,
+                              doctorName: "Dr. John Doe",
+                              specialty: "Cardiologist",
+                              rating: "4.8",
+                              distance: "1.2km",
+                              price: "85",
+                              onTap: toDocDetails,
+                          ),
+                      ),
+                      separatorBuilder: (context, index)=> SizedBox(width: 12.w,),
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
                   SectionHeader(title: 'Health articles', onClick: () {}),
                   ListView.builder(
-                    itemCount: 10,
+                    itemCount: 6,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.zero,
@@ -134,5 +164,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void toProfile() {
     GoRouter.of(context).pushNamed(AppRouteConst.profileRoute);
+  }
+
+  void toDocDetails(){
+    GoRouter.of(context).pushNamed(AppRouteConst.docDetailsRoute);
   }
 }

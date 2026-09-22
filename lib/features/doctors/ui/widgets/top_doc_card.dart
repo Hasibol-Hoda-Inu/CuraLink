@@ -1,5 +1,6 @@
 import 'package:curalink/application/app_colors.dart';
 import 'package:curalink/application/assets_path.dart';
+import 'package:curalink/features/common/ui/widgets/distance_widget.dart';
 import 'package:curalink/features/doctors/ui/widgets/review_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,12 +33,7 @@ class TopDocCard extends StatelessWidget {
                     Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
                     Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
                     ReviewChip(),
-                    Row(
-                      children: [
-                        Icon(Icons.location_on, color: Colors.grey.shade400,),
-                        Text("800m away", style: TextStyle(color: AppColors.greyText),),
-                      ],
-                    ),
+                    DistanceWidget(),
                   ],
                 ))
           ],
