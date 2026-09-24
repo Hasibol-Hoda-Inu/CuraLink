@@ -9,11 +9,13 @@ class AssetsPath {
   static const String homeDoc = "$_base/homeDoc.png";
   static const String topDoc = "$_base/topdoc.png";
   static const String topDocChamber = "$_base/topdoc.jpg";
+  static const String blogBannerImg = "$_base/vibrant_fresh_fruits.webp";
 
   static const String bodrex = "$_base/bodrex.jpg";
   static const String phBanner = "$_base/phbanner.png";
 
   static const String article01 = "$_base/article01.png";
+  static const String cardiologistImg = "$_base/cardiologist.webp";
   static const String profile = "$_base/profile.png";
 
   static const String googleLogo = "$_base/Google.svg";

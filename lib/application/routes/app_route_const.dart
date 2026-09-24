@@ -16,4 +16,7 @@ class AppRouteConst {
   static const String profileRoute = "profile";
 
   static const String pharmacyRoute = "pharmacy";
+
+  static const String blogArchiveRoute = "blogArchive";
+  static const String singlePostRoute = "singlePost";
 }

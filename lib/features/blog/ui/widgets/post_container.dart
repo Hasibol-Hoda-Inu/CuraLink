@@ -1,9 +1,9 @@
-import 'package:curalink/application/app_colors.dart';
+import 'package:curalink/application/assets_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ArticleContainer extends StatelessWidget {
-  const ArticleContainer({
+class PostContainer extends StatelessWidget {
+  const PostContainer({
     super.key,
     required this.onClick,
   });
@@ -15,38 +15,46 @@ class ArticleContainer extends StatelessWidget {
     return GestureDetector(
       onTap: onClick,
       child: Container(
-        margin: EdgeInsets.only(bottom: 10.h),
-        padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
+        padding: EdgeInsets.all(12.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppColors.primaryColor.withAlpha(28)),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.r),
+          border: Border.all(color: const Color(0xFFF2F4F7), width: 1.w),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFF101623).withAlpha(8),
+              blurRadius: 20.r,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
-        child: Row(
+        child: Column(
           crossAxisAlignment: .start,
-          spacing: 10.w,
+          mainAxisSize: .min,
+          spacing: 10.h,
           children: [
-            Container(
-              width: 64.w,
-              height: 62.h,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor.withAlpha(38),
-                borderRadius: BorderRadius.circular(12.sp),
-
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12.r),
+              child: Image.asset(
+                AssetsPath.cardiologistImg,
+                height: 110.h,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
             ),
-            //Image.asset(AssetsPath.article01, width: 64.w, height: 62.h,),
-            Expanded(
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w),
               child: Column(
-                spacing: 6.h,
                 crossAxisAlignment: .start,
-                mainAxisAlignment: .spaceBetween,
+                spacing: 4.h,
                 children: [
-                  Text("The 25 Healthiest Fruits You Can Eat, According to a Nutritionist",
-                    maxLines: 2,
+                  Text(
+                    "10 Simple Daily Habits for Long Term Health",
                     overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                     style: TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w700,
-                      fontSize: 12.sp,
                     ),
                   ),
                   Wrap(
@@ -62,10 +70,6 @@ class ArticleContainer extends StatelessWidget {
                 ],
               ),
             ),
-            IconButton(onPressed: (){},
-                icon: Icon(Icons.bookmark_border_rounded,
-                  color: AppColors.primaryColor,
-                ))
           ],
         ),
       ),

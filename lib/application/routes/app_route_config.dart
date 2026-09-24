@@ -1,6 +1,8 @@
 import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/auth/ui/screens/login.dart';
 import 'package:curalink/features/auth/ui/screens/sign_up.dart';
+import 'package:curalink/features/blog/ui/screens/blog_archive.dart';
+import 'package:curalink/features/blog/ui/screens/single_blog_page.dart';
 import 'package:curalink/features/doctors/ui/screens/appointment_summary.dart';
 import 'package:curalink/features/doctors/ui/screens/booking_confirmation.dart';
 import 'package:curalink/features/doctors/ui/screens/doctor_details.dart';
@@ -86,6 +88,16 @@ final GoRouter appRouter = GoRouter(
       name: AppRouteConst.profileRoute,
       path: "/profile",
       pageBuilder: (context, state)=> const MaterialPage(child: Profile()),
+    ),
+    GoRoute(
+      name: AppRouteConst.blogArchiveRoute,
+      path: "/blogArchive",
+      pageBuilder: (context, state)=> MaterialPage(child: BlogArchive()),
+    ),
+    GoRoute(
+      name: AppRouteConst.singlePostRoute,
+      path: "/singlePost",
+      pageBuilder: (context, state)=> MaterialPage(child: SingleBlogPage()),
     ),
   ]
 );

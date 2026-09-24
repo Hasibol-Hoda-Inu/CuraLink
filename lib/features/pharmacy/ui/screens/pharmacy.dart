@@ -30,7 +30,7 @@ class _PharmacyState extends State<Pharmacy> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.h),
         child: Column(
           children: [
             Container(

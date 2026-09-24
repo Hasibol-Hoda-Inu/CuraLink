@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             SizedBox(height: 64.h),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.0.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.0.w),
               child: Row(
                 crossAxisAlignment: .center,
                 mainAxisAlignment: .spaceBetween,
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 20.h, left: 30.w, right: 30.w),
+              padding: EdgeInsets.only(top: 20.h, left: 20.w, right: 20.w),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -137,13 +137,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   SizedBox(height: 20.h),
-                  SectionHeader(title: 'Health articles', onClick: () {}),
+                  SectionHeader(title: 'Health articles', onClick: toBlogArchive),
                   ListView.builder(
                     itemCount: 6,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => ArticleContainer(),
+                    itemBuilder: (context, index) => ArticleContainer(onClick: toSinglePost,),
                   ),
                 ],
               ),
@@ -168,5 +168,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void toDocDetails(){
     GoRouter.of(context).pushNamed(AppRouteConst.docDetailsRoute);
+  }
+
+  void toBlogArchive(){
+    GoRouter.of(context).pushNamed(AppRouteConst.blogArchiveRoute);
+  }
+
+  void toSinglePost(){
+    GoRouter.of(context).pushNamed(AppRouteConst.singlePostRoute);
   }
 }

@@ -86,6 +86,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       "title": "Get advice only from a doctor you believe in.",
       "image": AssetsPath.docM
     },
+    {
+      "title": "Get advice only from a doctor you believe in.",
+      "image": AssetsPath.docM
+    },
   ];
 
   @override
