@@ -17,7 +17,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 30.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 30.h),
         child: SingleChildScrollView(
           child: Column(
             children: [

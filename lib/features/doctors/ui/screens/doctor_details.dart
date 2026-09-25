@@ -60,7 +60,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.h),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: .start,

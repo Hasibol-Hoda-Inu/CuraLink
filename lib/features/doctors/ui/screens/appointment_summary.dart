@@ -24,7 +24,7 @@ class _AppointmentSummaryState extends State<AppointmentSummary> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
         child: SingleChildScrollView(
           child: Column(
             spacing: 20,

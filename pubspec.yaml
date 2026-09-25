@@ -17,6 +17,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   go_router: ^17.5.0
   flutter_markdown_plus: ^1.0.12
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:

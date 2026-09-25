@@ -1,10 +1,12 @@
 import 'package:curalink/application/app_colors.dart';
 import 'package:curalink/application/assets_path.dart';
+import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/common/ui/widgets/section_header.dart';
 
 import 'package:curalink/features/pharmacy/ui/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class Pharmacy extends StatefulWidget {
   const Pharmacy({super.key});
@@ -78,7 +80,7 @@ class _PharmacyState extends State<Pharmacy> {
               height: 166.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index)=> ProductCard(),
+                itemBuilder: (context, index)=> ProductCard(onClick: toProductDScrn,),
                 separatorBuilder: (context, index)=> SizedBox(width: 20.w,),
                 itemCount: 4,
 
@@ -91,7 +93,7 @@ class _PharmacyState extends State<Pharmacy> {
               height: 166.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index)=> ProductCard(offerPrice: offerPrices[index],),
+                itemBuilder: (context, index)=> ProductCard(offerPrice: offerPrices[index], onClick: toProductDScrn,),
                 separatorBuilder: (context, index)=> SizedBox(width: 20.w,),
                 itemCount: 4,
 
@@ -101,6 +103,10 @@ class _PharmacyState extends State<Pharmacy> {
         ),
       ),
     );
+  }
+
+  void toProductDScrn(){
+    GoRouter.of(context).pushNamed(AppRouteConst.productDScrnRoute);
   }
 }
 

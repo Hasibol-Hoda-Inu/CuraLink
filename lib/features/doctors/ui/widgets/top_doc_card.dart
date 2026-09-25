@@ -32,8 +32,14 @@ class TopDocCard extends StatelessWidget {
                   children: [
                     Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
                     Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
-                    ReviewChip(),
-                    DistanceWidget(),
+                    Row(
+                      spacing: 6.w,
+                      children: [
+                        ReviewChip(),
+                        DistanceWidget(),
+                      ],
+                    ),
+
                   ],
                 ))
           ],

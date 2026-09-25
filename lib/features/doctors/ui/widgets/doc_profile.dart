@@ -34,9 +34,9 @@ class DocProfileWidget extends StatelessWidget {
                   Text("Dr. Vaamana", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),),
                   Text("Orthopaedic", style: TextStyle(color: AppColors.greyText),),
                   Row(
+                    spacing: 10.w,
                     children: [
                       ReviewChip(),
-                      SizedBox(width: 10.w,),
                       DistanceWidget(),
                     ],
                   ),

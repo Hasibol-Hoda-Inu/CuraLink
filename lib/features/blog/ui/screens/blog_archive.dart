@@ -25,7 +25,12 @@ class _BlogArchiveState extends State<BlogArchive> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.h),
+        padding: EdgeInsets.only(
+            left: 20.0.w,
+            right: 20.w,
+            top: 10.h,
+            bottom: 20.h,
+        ),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: .start,

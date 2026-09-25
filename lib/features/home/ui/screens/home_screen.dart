@@ -3,6 +3,7 @@ import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/common/ui/widgets/section_header.dart';
 import 'package:curalink/features/home/ui/widgets/article_container.dart';
 import 'package:curalink/features/home/ui/widgets/category_item.dart';
+import 'package:curalink/features/home/ui/widgets/emergency_ambulance.dart';
 import 'package:curalink/features/home/ui/widgets/top_doc_profile_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -89,31 +90,32 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: CategoryItem(
                           label: 'Top Doctors',
                           iconPath: AssetsPath.topDocs,
-                          onTap: toTopDoctors,
+                          onClick: toTopDoctors,
                         ),
                       ),
                       Expanded(
                         child: CategoryItem(
                           label: 'Pharmacy',
                           iconPath: AssetsPath.pharmacyIcon,
-                          onTap: toPharmacy,
+                          onClick: toPharmacy,
                         ),
                       ),
                       Expanded(
                         child: CategoryItem(
                           label: 'Ambulance',
                           iconPath: AssetsPath.ambulanceIcon,
-                          onTap: () {},
+                          onClick: _showAmbulanceSheet,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(height: 30.h),
-                  SectionHeader(title: 'Top Doctors', onClick: () {}),
+                  SectionHeader(title: 'Top Doctors', onClick: toTopDoctors),
                   Transform.translate(
-                      offset: Offset(0, -10),
-                      child: Text("Highly recommended specialist near you")),
-                  SizedBox(height: 4.h,),
+                    offset: Offset(0, -10),
+                    child: Text("Highly recommended specialist near you"),
+                  ),
+                  SizedBox(height: 4.h),
                   SizedBox(
                     height: 284.h,
                     child: ListView.separated(
@@ -124,26 +126,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) => SizedBox(
                         width: 240.w,
                         child: TopDocProfileCard(
-                              imagePath: AssetsPath.topDocChamber,
-                              doctorName: "Dr. John Doe",
-                              specialty: "Cardiologist",
-                              rating: "4.8",
-                              distance: "1.2km",
-                              price: "85",
-                              onTap: toDocDetails,
-                          ),
+                          imagePath: AssetsPath.topDocChamber,
+                          doctorName: "Dr. John Doe",
+                          specialty: "Cardiologist",
+                          rating: "4.8",
+                          distance: "1.2km",
+                          price: "85",
+                          onTap: toDocDetails,
+                        ),
                       ),
-                      separatorBuilder: (context, index)=> SizedBox(width: 12.w,),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(width: 12.w),
                     ),
                   ),
                   SizedBox(height: 20.h),
-                  SectionHeader(title: 'Health articles', onClick: toBlogArchive),
+                  SectionHeader(
+                    title: 'Health articles',
+                    onClick: toBlogArchive,
+                  ),
                   ListView.builder(
                     itemCount: 6,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     padding: EdgeInsets.zero,
-                    itemBuilder: (context, index) => ArticleContainer(onClick: toSinglePost,),
+                    itemBuilder: (context, index) =>
+                        ArticleContainer(onClick: toSinglePost),
                   ),
                 ],
               ),
@@ -151,6 +158,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showAmbulanceSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        return EmergencyAmbulance();
+      },
     );
   }
 
@@ -166,15 +183,15 @@ class _HomeScreenState extends State<HomeScreen> {
     GoRouter.of(context).pushNamed(AppRouteConst.profileRoute);
   }
 
-  void toDocDetails(){
+  void toDocDetails() {
     GoRouter.of(context).pushNamed(AppRouteConst.docDetailsRoute);
   }
 
-  void toBlogArchive(){
+  void toBlogArchive() {
     GoRouter.of(context).pushNamed(AppRouteConst.blogArchiveRoute);
   }
 
-  void toSinglePost(){
+  void toSinglePost() {
     GoRouter.of(context).pushNamed(AppRouteConst.singlePostRoute);
   }
 }
