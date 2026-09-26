@@ -1,6 +1,7 @@
-class BlogContent{
-  static const String title = '''The 25 healthiest fruits you can eat, according to the nutritionists''';
-  static const String content = '''
+class Contents {
+  static const String blogTitle =
+      '''The 25 healthiest fruits you can eat, according to the nutritionists''';
+  static const String blogContent = '''
 Nutritionists consistently emphasize that incorporating a diverse spectrum of fruits into your daily routine is one of the most effective ways to boost overall health and longevity. A colorful spread of produce signifies a rich, varied nutritional profile packed with essential vitamins, antioxidants, and dietary fiber.
 
 Here are the 25 healthiest fruits you can eat, categorized by their primary nutritional strengths for easy reference:
@@ -39,5 +40,26 @@ Here are the 25 healthiest fruits you can eat, categorized by their primary nutr
 * **Cherries:** Packed with natural melatonin to improve sleep quality and reduce exercise-induced joint pain.
 * **Peaches:** Rich in potassium and vitamins A and C for skin elasticity and hydration.
 * **Plums:** Great for bone health and increasing intracellular antioxidant levels.
+''';
+
+  static const String productTitle =
+      '''Healthvit L-Lysine Essential Amino Acid''';
+
+  static const String productDescription = '''
+Essential amino acid supplement for cellular health, protein synthesis, and overall vitality.
+
+### **Uses**
+* **Skin & Lip Integrity:** Aids collagen production and helps manage cold sores.
+* **Immune System:** Fortifies natural defense mechanisms.
+* **Membrane Health:** Maintains robust cellular membranes.
+* **Muscle & Bone:** Assists tissue repair and calcium absorption.
+
+### **Dosage Guidelines**
+* **Adults:** 1-2 tablets daily with meals.
+* **Children:** Consult a pediatrician first. 
+* **Note:** Consult a doctor if pregnant, lactating, or dealing with kidney issues.
+
+### **Side Effects**
+Generally safe. High doses may cause mild stomach discomfort, nausea, or diarrhea.
 ''';
 }

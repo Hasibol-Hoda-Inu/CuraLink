@@ -1,5 +1,5 @@
 import 'package:curalink/application/assets_path.dart';
-import 'package:curalink/features/blog/ui/contents/healthiest_fruits.dart';
+import 'package:curalink/features/common/ui/const/contents.dart';
 import 'package:curalink/features/common/ui/widgets/section_header.dart';
 import 'package:curalink/features/home/ui/widgets/article_container.dart';
 import 'package:flutter/material.dart';
@@ -41,10 +41,10 @@ class _SingleBlogPageState extends State<SingleBlogPage> {
                 ),
               ),
               SizedBox(height: 20.h,),
-              Text(BlogContent.title, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp),),
+              Text(Contents.blogTitle, style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18.sp),),
               SizedBox(height: 10.h,),
               MarkdownBody(
-                data: BlogContent.content,
+                data: Contents.blogContent,
                 styleSheet: MarkdownStyleSheet(
                   p: TextStyle(
                     fontSize: 14.sp,
