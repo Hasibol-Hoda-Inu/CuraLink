@@ -80,8 +80,15 @@ class _PharmacyState extends State<Pharmacy> {
               height: 166.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index)=> ProductCard(onClick: toProductDScrn,),
-                separatorBuilder: (context, index)=> SizedBox(width: 20.w,),
+                itemBuilder: (context, index)
+                {
+                  final String uniqueHeroTag = "popular_product_image_$index";
+                 return ProductCard(
+                   onClick: ()=> toProductDScrn(uniqueHeroTag),
+                   heroTag: uniqueHeroTag,
+                 );
+                },
+                separatorBuilder: (context, index)=> SizedBox(width: 10.w,),
                 itemCount: 4,
 
               ),
@@ -93,8 +100,13 @@ class _PharmacyState extends State<Pharmacy> {
               height: 166.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index)=> ProductCard(offerPrice: offerPrices[index], onClick: toProductDScrn,),
-                separatorBuilder: (context, index)=> SizedBox(width: 20.w,),
+                itemBuilder: (context, index){
+                  final String uniqueHeroTag = "sale_product_image_$index";
+                  return ProductCard(offerPrice: offerPrices[index],
+                    onClick: ()=> toProductDScrn(uniqueHeroTag),
+                    heroTag: uniqueHeroTag,);
+                },
+                separatorBuilder: (context, index)=> SizedBox(width: 10.w,),
                 itemCount: 4,
 
               ),
@@ -105,8 +117,8 @@ class _PharmacyState extends State<Pharmacy> {
     );
   }
 
-  void toProductDScrn(){
-    GoRouter.of(context).pushNamed(AppRouteConst.productDScrnRoute);
+  void toProductDScrn(String uniqueHeroTag){
+    GoRouter.of(context).pushNamed(AppRouteConst.productDScrnRoute, extra: uniqueHeroTag);
   }
 }
 

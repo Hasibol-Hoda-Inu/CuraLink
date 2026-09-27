@@ -9,10 +9,12 @@ class ProductCard extends StatelessWidget {
     super.key,
     this.offerPrice,
     required this.onClick,
+    required this.heroTag,
   });
 
   final String? offerPrice;
   final VoidCallback onClick;
+  final String heroTag;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,9 @@ class ProductCard extends StatelessWidget {
         child: Column(
           spacing: 8.h,
           children: [
-            Image.asset(AssetsPath.bodrex, height: 74.h),
+            Hero(
+                tag: heroTag,
+                child: Image.asset(AssetsPath.bodrex, height: 74.h)),
             Column(
               crossAxisAlignment: .start,
               children: [

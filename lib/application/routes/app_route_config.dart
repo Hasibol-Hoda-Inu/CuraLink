@@ -88,7 +88,10 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: AppRouteConst.productDScrnRoute,
       path: "/productDScrn",
-      pageBuilder: (context, state)=> const MaterialPage(child: ProductDetailsScreen()),
+      pageBuilder: (context, state){
+        final String? heroTag = state.extra as String? ;
+        return MaterialPage(child: ProductDetailsScreen(heroTag: heroTag,));
+      }
     ),
     GoRoute(
       name: AppRouteConst.profileRoute,

@@ -9,7 +9,11 @@ import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({
+    super.key,
+    this.heroTag,
+  });
+  final String? heroTag;
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -18,7 +22,6 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   List<String> imgUrls = [
-    AssetsPath.topDocChamber,
     AssetsPath.bodrex,
     AssetsPath.bodrex,
     AssetsPath.bodrex,
@@ -36,6 +39,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           children: [
             ProductImgCarouselSlider(
               imageUrls: imgUrls,
+              heroTag: widget.heroTag,
             ),
             Padding(
               padding: EdgeInsets.only(
