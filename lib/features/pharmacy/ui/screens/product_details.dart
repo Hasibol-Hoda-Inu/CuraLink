@@ -1,5 +1,6 @@
 import 'package:curalink/application/app_colors.dart';
 import 'package:curalink/application/assets_path.dart';
+import 'package:curalink/application/routes/app_route_const.dart';
 import 'package:curalink/features/common/ui/const/contents.dart';
 import 'package:curalink/features/pharmacy/ui/widgets/product_img_carousel_slider.dart';
 import 'package:curalink/features/pharmacy/ui/widgets/product_quantity_stepper.dart';
@@ -7,6 +8,7 @@ import 'package:curalink/features/pharmacy/ui/widgets/product_review.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({
@@ -82,7 +84,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     Row(
                       mainAxisAlignment: .spaceBetween,
                       children: [
-                        ProductQuantityStepperWidget(onChange: (int value) {},),
+                        ProductQuantityStepperWidget(onChange: (int value) {}),
                         Text("\$99",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -104,7 +106,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       ),
                     ),
                     SizedBox(height: 20.h,),
-                    ElevatedButton(onPressed: (){}, child: Text("Buy")),
+                    ElevatedButton(onPressed: goToCartScreen, child: Text("Add to Cart")),
                   ],
                 ),
               ),
@@ -113,5 +115,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
       ),
     );
+  }
+
+  void goToCartScreen(){
+    GoRouter.of(context).pushNamed(AppRouteConst.cartScreenRoute);
   }
 }

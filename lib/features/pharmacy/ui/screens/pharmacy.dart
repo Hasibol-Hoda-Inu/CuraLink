@@ -16,23 +16,20 @@ class Pharmacy extends StatefulWidget {
 }
 
 class _PharmacyState extends State<Pharmacy> {
-
-  List<String> offerPrices = [
-    "\$10.99",
-    "\$9.99",
-    "\$12.99",
-    "\$57.99",
-  ];
+  List<String> offerPrices = ["\$10.99", "\$9.99", "\$12.99", "\$57.99"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pharmacy", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.sp),),
+        title: Text(
+          "Pharmacy",
+          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16.sp),
+        ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.0.w,),
         child: Column(
           children: [
             Container(
@@ -48,67 +45,68 @@ class _PharmacyState extends State<Pharmacy> {
                       spacing: 12.h,
                       crossAxisAlignment: .start,
                       children: [
-                        Text("Order quickly with Prescription",
+                        Text(
+                          "Order quickly with Prescription",
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 18.sp,
                           ),
                         ),
                         ElevatedButton(
-                            onPressed: (){},
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: Size(136.w, 30.h),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.r),
-                              ),
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(136.w, 30.h),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.r),
                             ),
-                            child: Text("Upload prescription",
-                              style: TextStyle(fontSize: 12.sp,)
-                            )
-                        )
+                          ),
+                          child: Text(
+                            "Upload prescription",
+                            style: TextStyle(fontSize: 12.sp),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  Image.asset(AssetsPath.phBanner, width: 90.w,),
+                  Image.asset(AssetsPath.phBanner, width: 90.w),
                 ],
               ),
             ),
-            SizedBox(height: 20.h,),
-            SectionHeader(title: 'Popular Products', onClick: () {  },),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 20.h),
+            SectionHeader(title: 'Popular Products', onClick: () {}),
+            SizedBox(height: 10.h),
             SizedBox(
               height: 166.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index)
-                {
+                itemBuilder: (context, index) {
                   final String uniqueHeroTag = "popular_product_image_$index";
-                 return ProductCard(
-                   onClick: ()=> toProductDScrn(uniqueHeroTag),
-                   heroTag: uniqueHeroTag,
-                 );
+                  return ProductCard(
+                    onClick: () => toProductDScrn(uniqueHeroTag),
+                    heroTag: uniqueHeroTag,
+                  );
                 },
-                separatorBuilder: (context, index)=> SizedBox(width: 10.w,),
+                separatorBuilder: (context, index) => SizedBox(width: 10.w),
                 itemCount: 4,
-
               ),
             ),
-            SizedBox(height: 20.h,),
-            SectionHeader(title: 'Products on sale', onClick: () {  },),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 20.h),
+            SectionHeader(title: 'Products on sale', onClick: () {}),
+            SizedBox(height: 10.h),
             SizedBox(
               height: 166.h,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index){
+                itemBuilder: (context, index) {
                   final String uniqueHeroTag = "sale_product_image_$index";
-                  return ProductCard(offerPrice: offerPrices[index],
-                    onClick: ()=> toProductDScrn(uniqueHeroTag),
-                    heroTag: uniqueHeroTag,);
+                  return ProductCard(
+                    offerPrice: offerPrices[index],
+                    onClick: () => toProductDScrn(uniqueHeroTag),
+                    heroTag: uniqueHeroTag,
+                  );
                 },
-                separatorBuilder: (context, index)=> SizedBox(width: 10.w,),
+                separatorBuilder: (context, index) => SizedBox(width: 10.w),
                 itemCount: 4,
-
               ),
             ),
           ],
@@ -117,9 +115,9 @@ class _PharmacyState extends State<Pharmacy> {
     );
   }
 
-  void toProductDScrn(String uniqueHeroTag){
-    GoRouter.of(context).pushNamed(AppRouteConst.productDScrnRoute, extra: uniqueHeroTag);
+  void toProductDScrn(String uniqueHeroTag) {
+    GoRouter.of(
+      context,
+    ).pushNamed(AppRouteConst.productDScrnRoute, extra: uniqueHeroTag);
   }
 }
-
-

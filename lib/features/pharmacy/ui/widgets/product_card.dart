@@ -34,12 +34,15 @@ class ProductCard extends StatelessWidget {
             Hero(
                 tag: heroTag,
                 child: Image.asset(AssetsPath.bodrex, height: 74.h)),
-            Column(
-              crossAxisAlignment: .start,
-              children: [
-                Text("Bodrex Herbal", style: TextStyle(fontWeight: FontWeight.w700)),
-                Text("100ml", style: TextStyle(color: AppColors.greyText)),
-              ],
+            Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                crossAxisAlignment: .start,
+                children: [
+                  Text("Bodrex Herbal", style: TextStyle(fontWeight: FontWeight.w700)),
+                  Text("100ml", style: TextStyle(color: AppColors.greyText)),
+                ],
+              ),
             ),
             Row(
               mainAxisAlignment: .spaceBetween,

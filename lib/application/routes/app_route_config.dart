@@ -11,6 +11,7 @@ import 'package:curalink/features/home/ui/screens/home_screen.dart';
 import 'package:curalink/features/onboarding/ui/screens/get_started.dart';
 import 'package:curalink/features/onboarding/ui/screens/onboarding.dart';
 import 'package:curalink/features/onboarding/ui/screens/splash_screen.dart';
+import 'package:curalink/features/pharmacy/ui/screens/cart_screen.dart';
 import 'package:curalink/features/pharmacy/ui/screens/pharmacy.dart';
 import 'package:curalink/features/pharmacy/ui/screens/product_details.dart';
 import 'package:curalink/features/profile/ui/screens/profile.dart';
@@ -92,6 +93,11 @@ final GoRouter appRouter = GoRouter(
         final String? heroTag = state.extra as String? ;
         return MaterialPage(child: ProductDetailsScreen(heroTag: heroTag,));
       }
+    ),
+    GoRoute(
+      name: AppRouteConst.cartScreenRoute,
+      path: "/cartScreen",
+      pageBuilder: (context, state)=> const MaterialPage(child: CartScreen()),
     ),
     GoRoute(
       name: AppRouteConst.profileRoute,
