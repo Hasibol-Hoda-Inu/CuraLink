@@ -1,6 +1,10 @@
+import 'package:curalink/application/routes/app_route_const.dart';
+import 'package:curalink/features/common/ui/widgets/payment_details.dart';
+import 'package:curalink/features/common/ui/widgets/price_action_bar.dart';
 import 'package:curalink/features/pharmacy/ui/widgets/cart_item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
@@ -25,11 +29,26 @@ class _CartScreenState extends State<CartScreen> {
               name: 'OBH Combi',
               variantLine: 'Herbal Cough Syrup • 75ml',
               price: 9.99,
-              quantity: 1,
             ),
+            SizedBox(height: 10.h,),
+            CartItemCard(
+              name: 'OBH Combi',
+              variantLine: 'Herbal Cough Syrup • 75ml',
+              price: 9.99,
+            ),
+            SizedBox(height: 20.h,),
+            PaymentDetailsWidget(fee1Amount: 19.98, fee1: 'Total Price', fee2: 'Delivery Charge',),
+            Spacer(),
+            PriceActionBar(price: 28.48, onClick: goToCheckOutScreen,),
+            SizedBox(height: 20.h,)
           ],
         ),
       ),
     );
   }
+
+  void goToCheckOutScreen(){
+    GoRouter.of(context).pushNamed(AppRouteConst.pharmacyCheckOutScreenRoute);
+  }
 }
+

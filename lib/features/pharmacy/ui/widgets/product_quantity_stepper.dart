@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductQuantityStepperWidget extends StatefulWidget {
-  const ProductQuantityStepperWidget({super.key, required this.onChange});
+  const ProductQuantityStepperWidget({
+    super.key,
+    required this.onChange,
+    required this.iconSize,
+  });
   final Function(int) onChange;
+  final double iconSize;
 
   @override
   State<ProductQuantityStepperWidget> createState() =>
@@ -23,7 +28,11 @@ class _ProductQuantityStepperWidgetState
         IconButton.filledTonal(
           onPressed: _decrement,
           style: IconButton.styleFrom(
-              backgroundColor: _count == 1 ? AppColors.primaryColor.withValues(alpha: 0.4) : AppColors.primaryColor,
+            backgroundColor: _count == 1 ? AppColors.primaryColor.withValues(alpha: 0.4) : AppColors.primaryColor,
+            fixedSize: Size.square(widget.iconSize),
+            minimumSize: Size.zero,
+            padding: EdgeInsets.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(4),
             ),
@@ -40,12 +49,16 @@ class _ProductQuantityStepperWidgetState
         IconButton.filledTonal(
           onPressed: _increment,
           style: IconButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
+            backgroundColor: AppColors.primaryColor,
+            fixedSize: Size.square(widget.iconSize),
+            minimumSize: Size.zero,
+            padding: EdgeInsets.zero,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(4),
+              borderRadius: BorderRadiusGeometry.circular(4.r),
             ),
           ),
-          icon: const Icon(Icons.add, color: Colors.white),
+          icon: Icon(Icons.add, color: Colors.white),
         ),
       ],
     );

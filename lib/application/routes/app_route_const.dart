@@ -18,6 +18,7 @@ class AppRouteConst {
   static const String pharmacyRoute = "pharmacy";
   static const String productDScrnRoute = "productDScrn";
   static const String cartScreenRoute = "cartScreen";
+  static const String pharmacyCheckOutScreenRoute = "pharmacyCheckOutScreen";
 
   static const String blogArchiveRoute = "blogArchive";
   static const String singlePostRoute = "singlePost";

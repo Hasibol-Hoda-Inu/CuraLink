@@ -10,7 +10,6 @@ class CartItemCard extends StatelessWidget {
     required this.name,
     required this.variantLine,
     required this.price,
-    required this.quantity,
     this.badgeText = 'OTC',
     this.stockText = 'In Stock (Ready to dispatch)',
     this.onRemove,
@@ -19,117 +18,117 @@ class CartItemCard extends StatelessWidget {
   final String name;
   final String variantLine;
   final double price;
-  final int quantity;
-  final String? badgeText;
-  final String? stockText;
+  final String badgeText;
+  final String stockText;
   final VoidCallback? onRemove;
-
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.greyText),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: AppColors.primaryColor.withAlpha(12)),
       ),
       child: Column(
-        crossAxisAlignment: .start,
+        spacing: 16.h,
         children: [
           Row(
             crossAxisAlignment: .start,
+            spacing: 12.w,
             children: [
-              Image.asset(AssetsPath.bodrex, height: 120.h),
-              const SizedBox(width: 12),
+              Image.asset(AssetsPath.bodrex, height: 80.h),
               Expanded(
                 child: Column(
                   crossAxisAlignment: .start,
+                  spacing: 2.h,
                   children: [
                     Row(
+                      spacing: 8.w,
                       children: [
                         Flexible(
                           child: Text(
                             name,
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        if (badgeText != null) ...[
-                          const SizedBox(width: 8),
-                          _Badge(label: badgeText!),
-                        ],
+                        _buildBadge(badgeText),
                       ],
                     ),
-                    const SizedBox(height: 4),
                     Text(
                       variantLine,
-                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: AppColors.bodyText,
+                      ),
                     ),
-                    const SizedBox(height: 6),
                     Text(
                       '\$${price.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
-              IconButton.filledTonal(onPressed: (){}, icon: Icon(Icons.delete)),
+              IconButton.filledTonal(
+                onPressed: onRemove,
+                icon: Icon(
+                  Icons.delete_outline,
+                  color: AppColors.bodyText,
+                  size: 20.sp,
+                ),
+              ),
             ],
           ),
-          _StockIndicator(text: stockText!),
-          const SizedBox(height: 12),
-          ProductQuantityStepperWidget(onChange: (int value) {}),
+          Row(
+            spacing: 8.w,
+            children: [
+              Expanded(
+                child: _buildStockIndicator(stockText)
+              ),
+              ProductQuantityStepperWidget(onChange: (_) {}, iconSize: 24.w,),
+            ],
+          ),
         ],
       ),
     );
   }
-}
 
-class _Badge extends StatelessWidget {
-  const _Badge({required this.label});
-
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildBadge(String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
       decoration: BoxDecoration(
-        color: Colors.green,
-        borderRadius: BorderRadius.circular(999),
+        color: AppColors.primaryColor.withAlpha(30),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: Text(
         label,
+        style: TextStyle(fontSize: 10.sp, color: AppColors.primaryColor),
       ),
     );
   }
-}
 
-class _StockIndicator extends StatelessWidget {
-  const _StockIndicator({required this.text});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildStockIndicator(String text) {
     return Row(
+      spacing: 4.w,
       children: [
-        const Icon(
-          Icons.check_circle,
-          size: 16,
-        ),
-        const SizedBox(width: 6),
+        Icon(Icons.check_circle, color: Colors.teal, size: 14.sp),
         Expanded(
           child: Text(
             text,
-            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w500,
+              color: Colors.teal,
+            ),
           ),
         ),
       ],

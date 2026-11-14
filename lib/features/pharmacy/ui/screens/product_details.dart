@@ -84,7 +84,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     Row(
                       mainAxisAlignment: .spaceBetween,
                       children: [
-                        ProductQuantityStepperWidget(onChange: (int value) {}),
+                        ProductQuantityStepperWidget(onChange: (int value) {}, iconSize: 32.w,),
                         Text("\$99",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
