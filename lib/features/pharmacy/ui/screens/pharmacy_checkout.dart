@@ -143,6 +143,8 @@ class _PharmacyCheckoutScreenState extends State<PharmacyCheckoutScreen> {
             controller: _phoneController,
             keyboardType: TextInputType.phone,
             textInputAction: TextInputAction.next,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autofillHints: const [AutofillHints.telephoneNumber],
             decoration: const InputDecoration(
               hintText: 'Mobile number *',
               prefixIcon: Icon(Icons.phone_outlined),
@@ -165,6 +167,8 @@ class _PharmacyCheckoutScreenState extends State<PharmacyCheckoutScreen> {
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
+            autofillHints: const [AutofillHints.email],
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: const InputDecoration(
               hintText: 'Email address (optional)',
               prefixIcon: Icon(Icons.email_outlined),
@@ -182,7 +186,9 @@ class _PharmacyCheckoutScreenState extends State<PharmacyCheckoutScreen> {
           TextFormField(
             controller: _addressController,
             keyboardType: TextInputType.streetAddress,
-            maxLines: 3,
+            textInputAction: TextInputAction.next,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autofillHints: const [AutofillHints.streetAddressLevel1],
             decoration: const InputDecoration(
               hintText: 'Shipping address *',
               prefixIcon: Icon(Icons.location_on_outlined),
@@ -317,9 +323,8 @@ class _PharmacyCheckoutScreenState extends State<PharmacyCheckoutScreen> {
     if (!_formKey.currentState!.validate()) {
       return;
     }
-    GoRouter.of(context).pushNamed(AppRouteConst.bookingConfirmationRoute);
+    GoRouter.of(context).pushNamed(AppRouteConst.pharmacyCheckOutThankYouScreenRoute);
   }
-
 
 
   @override

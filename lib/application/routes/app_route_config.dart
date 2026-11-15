@@ -14,6 +14,7 @@ import 'package:curalink/features/onboarding/ui/screens/splash_screen.dart';
 import 'package:curalink/features/pharmacy/ui/screens/cart_screen.dart';
 import 'package:curalink/features/pharmacy/ui/screens/pharmacy.dart';
 import 'package:curalink/features/pharmacy/ui/screens/pharmacy_checkout.dart';
+import 'package:curalink/features/pharmacy/ui/screens/pharmacy_checkout_thankyou.dart';
 import 'package:curalink/features/pharmacy/ui/screens/product_details.dart';
 import 'package:curalink/features/profile/ui/screens/profile.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +105,11 @@ final GoRouter appRouter = GoRouter(
       name: AppRouteConst.pharmacyCheckOutScreenRoute,
       path: "/pharmacyCheckOutScreen",
       pageBuilder: (context, state)=> const MaterialPage(child: PharmacyCheckoutScreen()),
+    ),
+    GoRoute(
+      name: AppRouteConst.pharmacyCheckOutThankYouScreenRoute,
+      path: "/pharmacyCheckOutThankYou",
+      pageBuilder: (context, state)=> MaterialPage(child: PharmacyCheckoutThankYouScreen()),
     ),
     GoRoute(
       name: AppRouteConst.profileRoute,

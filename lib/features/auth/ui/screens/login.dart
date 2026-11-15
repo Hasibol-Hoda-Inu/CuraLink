@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0.w, vertical: 40.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 40.h),
         child: Column(
           children: [
             Form(
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 50.h),
+            SizedBox(height: 20.h),
             ElevatedButton(onPressed: toHomeScreen, child: Text("Login")),
             Row(
               mainAxisAlignment: .center,
