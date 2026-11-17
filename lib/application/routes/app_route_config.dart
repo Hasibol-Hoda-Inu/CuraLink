@@ -3,6 +3,9 @@ import 'package:curalink/features/auth/ui/screens/login.dart';
 import 'package:curalink/features/auth/ui/screens/sign_up.dart';
 import 'package:curalink/features/blog/ui/screens/blog_archive.dart';
 import 'package:curalink/features/blog/ui/screens/single_blog_page.dart';
+import 'package:curalink/features/common/ui/screens/main_bottom_nav.dart';
+import 'package:curalink/features/consultation/ui/screens/appointment_screen.dart';
+import 'package:curalink/features/consultation/ui/screens/video_call_screen.dart';
 import 'package:curalink/features/doctors/ui/screens/appointment_summary.dart';
 import 'package:curalink/features/doctors/ui/screens/booking_confirmation.dart';
 import 'package:curalink/features/doctors/ui/screens/doctor_details.dart';
@@ -53,11 +56,51 @@ final GoRouter appRouter = GoRouter(
       pageBuilder: (context, state)=> const MaterialPage(child: SignUp()),
 
     ),
-    GoRoute(
-      name: AppRouteConst.homeRoute,
-      path: "/home",
-      pageBuilder: (context, state)=> const MaterialPage(child: HomeScreen()),
-
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainNavigationScreen(
+          navigationShell: navigationShell,
+        );
+      },
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: AppRouteConst.homeRoute,
+              path: '/home',
+              builder: (context, state) => const HomeScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: AppRouteConst.pharmacyRoute,
+              path: '/pharmacy',
+              builder: (context, state) => const Pharmacy(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: AppRouteConst.appointmentScreenRoute,
+              path: '/appointments',
+              builder: (context, state) =>
+              const AppointmentsScreen(),
+            ),
+          ],
+        ),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              name: AppRouteConst.profileRoute,
+              path: '/profile',
+              builder: (context, state) => const Profile(),
+            ),
+          ],
+        ),
+      ],
     ),
     GoRoute(
       name: AppRouteConst.topDoctorsRoute,
@@ -84,9 +127,10 @@ final GoRouter appRouter = GoRouter(
 
     ),
     GoRoute(
-      name: AppRouteConst.pharmacyRoute,
-      path: "/pharmacy",
-      pageBuilder: (context, state)=> const MaterialPage(child: Pharmacy()),
+      name: AppRouteConst.videoCallRoute,
+      path: "/videoCall",
+      pageBuilder: (context, state)=> const MaterialPage(child: VideoCallScreen()),
+
     ),
     GoRoute(
       name: AppRouteConst.productDScrnRoute,
@@ -110,11 +154,6 @@ final GoRouter appRouter = GoRouter(
       name: AppRouteConst.pharmacyCheckOutThankYouScreenRoute,
       path: "/pharmacyCheckOutThankYou",
       pageBuilder: (context, state)=> MaterialPage(child: PharmacyCheckoutThankYouScreen()),
-    ),
-    GoRoute(
-      name: AppRouteConst.profileRoute,
-      path: "/profile",
-      pageBuilder: (context, state)=> const MaterialPage(child: Profile()),
     ),
     GoRoute(
       name: AppRouteConst.blogArchiveRoute,

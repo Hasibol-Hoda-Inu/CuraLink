@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PriceActionBar extends StatelessWidget {
   const PriceActionBar({
-    super.key, required this.price, required this.onClick,
+    super.key,
+    required this.price,
+    required this.onClick,
   });
 
   final double price;

@@ -48,7 +48,7 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
               BookingSummaryCard(),
               SizedBox(height: 30.h),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: toMyAppointments,
                 child: Text("Go to My Appointments"),
               ),
               SizedBox(height: 10.h,),
@@ -66,8 +66,11 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
     );
   }
 
-  void toMyAppointments(){}
+  void toMyAppointments(){
+    context.goNamed(AppRouteConst.appointmentScreenRoute);
+  }
+
   void toHome(){
-    GoRouter.of(context).pushReplacementNamed(AppRouteConst.homeRoute);
+    context.goNamed(AppRouteConst.homeRoute);
   }
 }

@@ -6,6 +6,13 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+
+    <key>NSCameraUsageDescription</key>
+    <string>CuraLink requires camera access for video consultations with doctors.</string>
+
+    <key>NSMicrophoneUsageDescription</key>
+    <string>CuraLink requires microphone access to communicate with doctors during consultations.</string>
+
 	<key>CFBundleDisplayName</key>
 	<string>CuraLink</string>
 	<key>CFBundleExecutable</key>

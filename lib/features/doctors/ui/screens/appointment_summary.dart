@@ -32,7 +32,7 @@ class _AppointmentSummaryState extends State<AppointmentSummary> {
               DocProfileWidget(),
               AppointmentDetailsCard(),
               PaymentDetailsWidget(fee1Amount: 80, fee1: 'Consultation Fee', fee2: 'Booking & Service Fee',),
-              PriceActionBar(price: 88.50, onClick: (){}),
+              PriceActionBar(price: 88.50, onClick: toBookingConfirmation,),
             ],
           ),
         ),
@@ -41,7 +41,7 @@ class _AppointmentSummaryState extends State<AppointmentSummary> {
   }
 
   void toBookingConfirmation(){
-    GoRouter.of(context).pushNamed(AppRouteConst.bookingConfirmationRoute);
+    context.goNamed(AppRouteConst.bookingConfirmationRoute);
   }
 }
 

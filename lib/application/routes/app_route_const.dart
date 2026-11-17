@@ -13,6 +13,9 @@ class AppRouteConst {
   static const String appointmentSumRoute = "appointmentSum";
   static const String bookingConfirmationRoute = "bookingConfirmation";
 
+  static const String videoCallRoute = "videoCall";
+  static const String appointmentScreenRoute = "appointmentScreen";
+
   static const String profileRoute = "profile";
 
   static const String pharmacyRoute = "pharmacy";

@@ -176,11 +176,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void toPharmacy() {
-    GoRouter.of(context).pushNamed(AppRouteConst.pharmacyRoute);
+    context.goNamed(AppRouteConst.pharmacyRoute);
   }
 
   void toProfile() {
-    GoRouter.of(context).pushNamed(AppRouteConst.profileRoute);
+    context.goNamed(AppRouteConst.profileRoute);
   }
 
   void toDocDetails() {
