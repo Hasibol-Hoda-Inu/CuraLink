@@ -28,4 +28,17 @@ class AssetsPath {
   static const String profileIcon3 = "$_base/icon3.svg";
   static const String profileIcon4 = "$_base/icon4.svg";
   static const String profileIcon5 = "$_base/icon5.svg";
+
+
+  static const String homeIcon = "$_base/home.svg";
+  static const String homeIconFilled = "$_base/home_filled.svg";
+
+  static const String profileIcon = "$_base/profile.svg";
+  static const String profileIconFilled = "$_base/profile_filled.svg";
+
+  static const String appointmentIcon = "$_base/appointment.svg";
+  static const String appointmentIconFilled = "$_base/appointment_filled.svg";
+
+  static const String pharmacyIconNav = "$_base/pharmacy_icon.svg";
+  static const String pharmacyIconFilled = "$_base/pharmacy_icon_filled.svg";
 }
