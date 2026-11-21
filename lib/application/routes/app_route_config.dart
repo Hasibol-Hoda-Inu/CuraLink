@@ -1,11 +1,11 @@
 import 'package:curalink/application/routes/app_route_const.dart';
+import 'package:curalink/features/appointments/ui/screens/appointment_screen.dart';
+import 'package:curalink/features/appointments/ui/screens/video_call_screen.dart';
 import 'package:curalink/features/auth/ui/screens/login.dart';
 import 'package:curalink/features/auth/ui/screens/sign_up.dart';
 import 'package:curalink/features/blog/ui/screens/blog_archive.dart';
 import 'package:curalink/features/blog/ui/screens/single_blog_page.dart';
 import 'package:curalink/features/common/ui/screens/main_bottom_nav.dart';
-import 'package:curalink/features/consultation/ui/screens/appointment_screen.dart';
-import 'package:curalink/features/consultation/ui/screens/video_call_screen.dart';
 import 'package:curalink/features/doctors/ui/screens/appointment_summary.dart';
 import 'package:curalink/features/doctors/ui/screens/booking_confirmation.dart';
 import 'package:curalink/features/doctors/ui/screens/doctor_details.dart';
@@ -129,14 +129,16 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       name: AppRouteConst.videoCallRoute,
       path: "/videoCall",
-      pageBuilder: (context, state)=> const MaterialPage(child: VideoCallScreen()),
-
+      pageBuilder: (context, state){
+        final String? docName = state.extra as String?;
+        return MaterialPage(child: VideoCallScreen(doctorName: docName,));
+      }
     ),
     GoRoute(
       name: AppRouteConst.productDScrnRoute,
       path: "/productDScrn",
       pageBuilder: (context, state){
-        final String? heroTag = state.extra as String? ;
+        final String? heroTag = state.extra as String?;
         return MaterialPage(child: ProductDetailsScreen(heroTag: heroTag,));
       }
     ),

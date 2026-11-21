@@ -1,5 +1,5 @@
 import 'package:curalink/application/app_colors.dart';
-import 'package:curalink/features/home/ui/widgets/local_ambulance_card.dart';
+import 'package:curalink/features/common/ui/widgets/quick_action_card.dart';
 import 'package:curalink/features/home/ui/widgets/national_emergency_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,10 +88,11 @@ class EmergencyAmbulance extends StatelessWidget {
                 "Critical Care • 2.8 km",
                 "Trauma & First Aid • 3.5 km",
               ];
-              return LocalAmbulanceCard(
+              return QuickActionCard(
                 clinicName: clinics[index],
                 ambulanceInfo: details[index],
                 onCall: () {},
+                icon: Icons.airport_shuttle,
               );
             },
           ),

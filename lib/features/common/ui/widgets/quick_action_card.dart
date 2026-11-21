@@ -2,16 +2,18 @@ import 'package:curalink/application/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LocalAmbulanceCard extends StatelessWidget {
+class QuickActionCard extends StatelessWidget {
+  final IconData icon;
   final String clinicName;
   final String ambulanceInfo;
   final VoidCallback onCall;
 
-  const LocalAmbulanceCard({
+  const QuickActionCard({
     super.key,
     required this.clinicName,
     required this.ambulanceInfo,
     required this.onCall,
+    required this.icon,
   });
 
   @override
@@ -32,7 +34,7 @@ class LocalAmbulanceCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: Icon(
-              Icons.airport_shuttle_rounded,
+              icon,
               color: AppColors.primaryColor,
               size: 24.sp,
             ),
